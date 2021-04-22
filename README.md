@@ -1,3 +1,2 @@
 # React_Sample
-To build use yarn run build:dev
-To launch chrome or start app use yarn start
+Start app with yarn start or npm start, go to localhost:8080

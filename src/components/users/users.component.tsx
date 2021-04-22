@@ -5,7 +5,10 @@ const Iusers = (props: any): JSX.Element => {
     const [state, setState] = useState("Search");
 
     return (
-        <button onClick={() => setState("Search")}>{state}</button>
+        <div>
+            <input type='text'></input>
+            <button onClick={() => setState("Search")}>{state}</button>
+        </div>
     );
 }
   
