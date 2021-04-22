@@ -2,14 +2,13 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import * as _ from 'lodash';
 import IgistResults from './gistResults';
-import { sanitizeResponse } from '../../utils';
-import { gitBaseUrl, defaultMsg } from '../../constants';
+import { sanitizeResponse, fetchAsync } from '../../utils';
+import { gitBaseUrl } from '../../constants';
 
 const Iusers = (props: any): JSX.Element => {
-    const baseObj:any = [];
     const [initialBState, BSubmit] = useState("Get User Gists");
     const [inputValue, inputSubmitted] = useState('');
-    const [gistUserData, setGistResData] = useState(baseObj);
+    const [gistUserData, setGistResData] = useState({});
     
     let submitUser = (e: any)=> {
         e.preventDefaults();
@@ -17,18 +16,7 @@ const Iusers = (props: any): JSX.Element => {
 
     let getUserList = () => {
         const url = gitBaseUrl + inputValue + '/gists';
-        //Can be part of a common ajax utility
-        async function fetchAsync(getUrl: RequestInfo) {
-            let response = await fetch(getUrl, { 
-                method: 'GET' });
-            let data = await response.json();
-            return data;
-        };
-
-        fetchAsync(url).then( data => {
-            setGistResData(sanitizeResponse(data));
-        });
-
+        fetchAsync(url).then( data => setGistResData(sanitizeResponse(data)));
     };
 
     return (
