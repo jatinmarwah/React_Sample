@@ -1,24 +1,44 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { useState } from 'react';
-import { gitBaseUrl } from '../../constants';
-
 
 const IgistResults = (props: any): JSX.Element => {
     const { dataMap } = props;
-    debugger;
+    //Table structure is complaining about white spaces (strange react dom error), so all in one line
     return dataMap.length > 0 ? (
-        <table>
-            <tbody>
-                { _.each(dataMap, (value: any, idx: number) => {
-                    <tr key={idx}>
-                        <td><a href={value.html_url} target='_uniq'>{value.id}</a></td>
+        <div id="renderList">
+            <span>Total Gists Returned: {dataMap.length}</span>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Number of Files</th>
+                        <th>Tag/Badge</th>
+                        <th>Gist Link</th>
                     </tr>
-                    })
-                };
-            </tbody>
-        </table>
+                    {dataMap.map((value:any,idx:number)=>{return(<ITableRowResults key={idx} rowData={value} gistFile={value.files} />)})}
+                </tbody>
+            </table>
+        </div>
     ): null;
+}
+
+const ITableRowResults = (props: any): JSX.Element => {
+    const { gistFile, rowData} = props;
+    return(
+        <tr>
+            <td>
+                {_.size(gistFile)}
+            </td>
+            <td>{extractTags(gistFile)}</td>
+            <td>
+                <a href={rowData.html_url} target='_uniq'>{rowData.id}</a>
+            </td>
+        </tr>
+        )
+}
+
+const extractTags = (val: any) => {
+    let tagList = _.keys(val).map((value)=>value.split('.')[1]);
+    return tagList.join(', ');
 }
 
 export default IgistResults;

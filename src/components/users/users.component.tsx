@@ -6,9 +6,7 @@ import { sanitizeResponse } from '../../utils';
 import { gitBaseUrl, defaultMsg } from '../../constants';
 
 const Iusers = (props: any): JSX.Element => {
-    const baseObj = {
-
-    };
+    const baseObj:any = [];
     const [initialBState, BSubmit] = useState("Get User Gists");
     const [inputValue, inputSubmitted] = useState('');
     const [gistUserData, setGistResData] = useState(baseObj);
