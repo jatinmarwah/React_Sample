@@ -1,0 +1,25 @@
+{
+  "name": "react_sample",
+  "version": "1.0.0",
+  "description": "React Code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jatinmarwah/React_Sample.git"
+  },
+  "keywords": [
+    "Git",
+    "React",
+    "React",
+    "Demo"
+  ],
+  "author": "JM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jatinmarwah/React_Sample/issues"
+  },
+  "homepage": "https://github.com/jatinmarwah/React_Sample#readme"
+}
