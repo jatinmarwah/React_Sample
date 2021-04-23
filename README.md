@@ -2,6 +2,10 @@
 
 download code in local via - https://github.com/jatinmarwah/React_Sample
 
+Master - latest Stable
+
+Develop - ongoing check in (might be unstable)
+
 execute command on root folder
 1) yarn run build:dev OR npm run build: dev
 
