@@ -1,6 +1,11 @@
 # React app, Single Page, Gist User Data
 
-Start app with yarn start or npm start;
+download code in local via - https://github.com/jatinmarwah/React_Sample
+
+execute command on root folder
+1) yarn run build:dev OR npm run build: dev
+
+2) Start app with yarn start OR npm start;
 
 GO TO:
 
