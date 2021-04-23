@@ -22,6 +22,9 @@ $base-light: #fff;
     background-color: cornflowerblue;
     cursor: pointer;
   }
+  img{
+    border-radius: 50%;
+  }
 
   #renderList{
     margin: 20px auto;
@@ -29,7 +32,7 @@ $base-light: #fff;
       margin: 0 auto;
     }
     td, th {
-      width: 4rem;
+      width: 10rem;
       min-height: 2rem;
       border: 1px solid #ccc;
       text-align: center;

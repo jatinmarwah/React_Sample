@@ -30,8 +30,12 @@ const IgistResults = (props: any): JSX.Element => {
 
 const ITableRowResults = (props: any): JSX.Element => {
     const { gistFile, rowData} = props;
-    const [forkValue, forkRequest] = useState('Loading...');
-    const Fork = forkDataParsing(rowData.forks_url).then( data => console.log(data));
+    const [forkValue, forkRequest] = useState([{loading: true}]);
+    fetchAsync(rowData.forks_url).then( data => {
+        //console.log(data);
+        forkRequest(forkDataParsing(data));
+    });
+
     return(
         <tr>
             <td>
@@ -41,7 +45,20 @@ const ITableRowResults = (props: any): JSX.Element => {
             <td>
                 <a href={rowData.html_url} target='_uniq'>{rowData.id}</a>
             </td>
-            <td>{forkValue}</td>
+            <td>
+                {
+                forkValue.length > 0 ? forkValue.map((dataResult:any, idx:number) => {
+                    return !dataResult.loading ? (
+                        <div className='user' key={idx}>
+                            <span>Username: {dataResult.userName}</span>
+                            <a href={dataResult.fork_url} target="_fork">
+                                <img src={dataResult.avatar} alt={dataResult.userName} width="100" height="100"/>
+                            </a>
+                        </div>
+                    ) : 'loading...';
+                }) : 'No Fork Exists'
+                }
+            </td>
         </tr>
         )
 }
@@ -51,8 +68,19 @@ const extractTags = (val: any) => {
     return tagList.join(', ');
 }
 
-const forkDataParsing = (val: any) => {
-    return fetchAsync(val);
+const forkDataParsing = (forkObjResp: any) => {
+    //get latest 3 users data only
+    const relevantData = forkObjResp.slice(forkObjResp.length-3, forkObjResp.length);
+    const normalizedData = _.map(relevantData, (value) => {
+            return {
+                loading: false,
+                userName: value.owner.login,
+                avatar: value.owner.avatar_url,
+                fork_url: value.html_url
+            }
+    });
+
+    return normalizedData;
 }
 
 export default IgistResults;
