@@ -4,10 +4,11 @@
   "description": "React Code",
   "main": "index.tsx",
   "scripts": {
+    "clean": "rimraf build",
     "pretest": "jest",
     "test": "jest --config=jest.config.ts --verbose --runInBand",
     "test:coverage": "jest --config=jest.config.ts --coverage",
-    "build:dev": "webpack",
+    "build:dev": "npm test && webpack",
     "start": "webpack serve --open 'Chrome'",
     "predeploy": "npm run build:dev",
     "deploy": "gh-pages -d dist"
@@ -44,6 +45,7 @@
     "@babel/preset-react": "^7.13.13",
     "@testing-library/react": "^11.2.6",
     "@testing-library/react-hooks": "^5.1.2",
+    "@testing-library/user-event": "^13.1.5",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.22",
@@ -60,6 +62,7 @@
     "jest": "^26.6.3",
     "mini-css-extract-plugin": "^1.5.0",
     "react-test-renderer": "^17.0.2",
+    "rimraf": "^3.0.2",
     "sass": "^1.32.11",
     "sass-loader": "^11.0.1",
     "source-map-loader": "^2.0.1",
