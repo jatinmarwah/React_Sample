@@ -1,9 +1,15 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
+import App from './App'
+import { configure, shallow, mount } from 'enzyme'
+import * as Adapter from 'enzyme-adapter-react-16'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/test/i);
-  expect(linkElement).toBeInTheDocument();
-});
+configure({ adapter: new Adapter() })
+
+describe('<App /> shallow rendering', () => {
+  it('Div Container Contains right header text', () => {
+    const wrapper = shallow(<App />)
+    expect(wrapper.find('header').text()).toBe('Get User Info')
+  })
+  
+})
