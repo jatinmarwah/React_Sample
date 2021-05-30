@@ -1,0 +1,49 @@
+
+
+let modal = document.querySelector('#result');
+setTimeout(function(){
+    modal.classList.remove('hidden);
+}, 10000);
+console.log('Results shown');
+
+
+
+
+var Storm = function () {};
+Storm.prototype.precip = 'rain';
+var WinterStorm = function () {};
+WinterStorm.prototype = new Storm();
+WinterStorm.prototype.precip = 'snow';
+var bob = new WinterStorm();
+console.log(Storm.precip);
+
+
+
+
+'use strict';
+function logThis() {
+  this.desc = 'logger';
+  console.log(this);
+}
+new logThis();
+
+
+
+sum(10, 20);
+diff(10, 20);
+function sum(x, y) {
+   console.log(x + y);
+}
+
+let diff = function (x, y) {
+    let m = x-y;
+   console.log(x - y);
+   return m;
+};
+
+
+let sub = () => {console.log("1")}
+
+
+
+console.log(typeof(function))
