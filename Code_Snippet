@@ -2,6 +2,7 @@
 
 let modal = document.querySelector('#result');
 setTimeout(function(){
+  console.log('Results shown');
     modal.classList.remove('hidden);
 }, 10000);
 console.log('Results shown');
@@ -15,7 +16,7 @@ var WinterStorm = function () {};
 WinterStorm.prototype = new Storm();
 WinterStorm.prototype.precip = 'snow';
 var bob = new WinterStorm();
-console.log(Storm.precip);
+console.log(bob.precip);
 
 
 
@@ -44,6 +45,20 @@ let diff = function (x, y) {
 
 let sub = () => {console.log("1")}
 
+sub(3);
+var m = 'name';
+var x = {
+  'name': "Raghu",
+  'm': "test"
+};
 
+var age = 10;
+
+x[m] = 12;
 
 console.log(typeof(function))
+
+<button onClick={this.handleClick} user={this.btn}>Click Me</button>
+<button onClick={event => this.handleClick(event)}>Click Me</button>
+
+let names: unknown[] = [];
